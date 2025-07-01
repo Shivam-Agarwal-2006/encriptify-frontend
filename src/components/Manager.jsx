@@ -37,6 +37,7 @@ const Manager = ({ theme }) => {
     const [text, setText] = useState("");
     const [output, setOutput] = useState("");
     const [firstrun, setFirstRun] = useState(true);
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     const generateRandomMap = () => {
         const asciiMap = {};
         for (let i = 32; i < 127; i++) {
@@ -52,7 +53,7 @@ const Manager = ({ theme }) => {
     const mapsRef = useRef({});
     const addMapToMongoDB = async (key) => {
         const generated = generateRandomMap();
-        await fetch("https://encriptify.onrender.com", {
+        await fetch(`${BACKEND_URL}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -74,7 +75,7 @@ const Manager = ({ theme }) => {
             }
         }, 4000);
 
-        const res = await fetch(`https://encriptify.onrender.com/?key=${encodeURIComponent(key)}`);
+        const res = await fetch(`${BACKEND_URL}/?key=${encodeURIComponent(key)}`);
         didRespond= true;
         clearTimeout(timeoutId);
         if (res.ok) {
