@@ -70,7 +70,7 @@ const Manager = ({ theme }) => {
         const timeoutId = setTimeout(() => {
             if (!didRespond) {
                 toast.info("Waking up server... please wait ⏳", {
-                    autoClose: 10000
+                    autoClose: 18000
                 });
             }
         }, 4000);
