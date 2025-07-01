@@ -76,7 +76,7 @@ const Manager = ({ theme }) => {
         }, 4000);
 
         const res = await fetch(`${BACKEND_URL}/?key=${encodeURIComponent(key)}`);
-        didRespond= true;
+        didRespond = true;
         clearTimeout(timeoutId);
         if (res.ok) {
             const entry = await res.json();
@@ -213,7 +213,7 @@ const Manager = ({ theme }) => {
         setOutput("");
     };
     return (
-        <main className={`${colors.bg} min-h-screen flex flex-col items-center px-4 py-10 ${colors.text} font-sans`}>
+        <main className={`${colors.bg} flex flex-col items-center px-4 py-10 ${colors.text} font-sans`}>
             <ToastContainer
                 position="top-right"
                 autoClose={3000}
@@ -229,7 +229,7 @@ const Manager = ({ theme }) => {
             />
             <h1 className="text-4xl font-bold mb-10 tracking-wide">Encryptify 🔐</h1>
 
-            <div className="flex flex-col items-center w-full max-w-3xl gap-6">
+            <div className="flex flex-col items-center w-full max-w-3xl gap-4">
 
                 {/* Input Textarea */}
                 <textarea
@@ -240,10 +240,10 @@ const Manager = ({ theme }) => {
                 ></textarea>
 
                 <div className="flex gap-4 self-end">
-                    <button onClick={() => handleCopy(text)} className="text-sm px-4 py-1 rounded bg-blue-500 text-white hover:bg-blue-600 cursor-pointer">
+                    <button onClick={() => handleCopy(text)} className="text-xs px-2 py-1 rounded bg-blue-500 text-white hover:bg-blue-600 cursor-pointer">
                         Copy
                     </button>
-                    <button onClick={handleClearText} className="text-sm px-4 py-1 rounded bg-red-500 text-white hover:bg-red-600 cursor-pointer">
+                    <button onClick={handleClearText} className="text-xs px-2 py-1 rounded bg-red-500 text-white hover:bg-red-600 cursor-pointer">
                         Clear
                     </button>
                 </div>
@@ -258,7 +258,7 @@ const Manager = ({ theme }) => {
                 />
 
                 {/* Buttons */}
-                <div className="flex flex-wrap justify-center gap-6 mt-4 w-full">
+                <div className="flex flex-wrap justify-center gap-6 my-2 w-full">
                     <button onClick={handleEncrypt} className={`bg-gradient-to-r ${colors.encrypt} text-white font-semibold px-6 py-2 rounded-xl shadow-xl transition-all duration-200 cursor-pointer hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600`}>
                         Encrypt
                     </button>
@@ -272,14 +272,14 @@ const Manager = ({ theme }) => {
                     placeholder="Output will appear here..."
                     readOnly
                     value={output}
-                    className={`${colors.input} w-full h-40 p-4 rounded-xl border border-gray-700 focus:outline-none resize-none mt-6 placeholder-gray-400`}
+                    className={`${colors.input} w-full h-40 p-4 rounded-xl border border-gray-700 focus:outline-none resize-none placeholder-gray-400`}
                 ></textarea>
 
                 <div className="flex gap-4 self-end">
-                    <button onClick={() => handleCopy(output)} className="text-sm px-4 py-1 rounded bg-blue-500 text-white hover:bg-blue-600 cursor-pointer">
+                    <button onClick={() => handleCopy(output)} className="text-xs px-2 py-1 rounded bg-blue-500 text-white hover:bg-blue-600 cursor-pointer">
                         Copy
                     </button>
-                    <button onClick={handleClearOutput} className="text-sm px-4 py-1 rounded bg-red-500 text-white hover:bg-red-600 cursor-pointer">
+                    <button onClick={handleClearOutput} className="text-xs px-2 py-1 rounded bg-red-500 text-white hover:bg-red-600 cursor-pointer">
                         Clear
                     </button>
                 </div>
