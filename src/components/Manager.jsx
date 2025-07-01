@@ -37,6 +37,7 @@ const Manager = ({ theme }) => {
     const [text, setText] = useState("");
     const [output, setOutput] = useState("");
     const [firstrun, setFirstRun] = useState(true);
+    const [isFetching, setIsFetching] = useState(false)
     const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     const generateRandomMap = () => {
         const asciiMap = {};
@@ -98,7 +99,9 @@ const Manager = ({ theme }) => {
         if (key.length > 3) {
             if (!mapsRef.current[key]) {
                 // If the key is not in the maps, retrieve it from MongoDB
+                setIsFetching(true);
                 await retrieveMapFromMongoDB(key);
+                setIsFetching(false);
             }
             const { asciiMap, reverseMap } = mapsRef.current[key]
             let res = ""
@@ -227,7 +230,7 @@ const Manager = ({ theme }) => {
                 theme="light"
                 transition={Bounce}
             />
-            <h1 className="text-4xl font-bold mb-10 tracking-wide">Encriptify 🔐</h1>
+            <h1 className="text-4xl font-bold mb-10 tracking-wide"> 🔐Encriptify</h1>
 
             <div className="flex flex-col items-center w-full max-w-3xl gap-4">
 
@@ -269,7 +272,7 @@ const Manager = ({ theme }) => {
 
                 {/* Output Textarea */}
                 <textarea
-                    placeholder="Output will appear here..."
+                    placeholder={isFetching ? "Please wait...it may take longer time than expected to wake up the server..." : "Output will be displayed here..."}
                     readOnly
                     value={output}
                     className={`${colors.input} w-full h-40 p-4 rounded-xl border border-gray-700 focus:outline-none resize-none placeholder-gray-400`}

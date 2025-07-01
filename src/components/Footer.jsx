@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="bg-[#0f0c29] border-t border-gray-500 text-white py-4">
             <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
                 <div className="text-center md:text-left">
-                    <h2 className="text-xl font-semibold">🔐 Encriptify</h2>
+                    <h2 className="text-xl font-semibold">🔐Encriptify</h2>
                     <p className="text-sm text-gray-400">Secure. Simple. Smart.</p>
                 </div>
                 <div className="mt-0 md:mt-0">
